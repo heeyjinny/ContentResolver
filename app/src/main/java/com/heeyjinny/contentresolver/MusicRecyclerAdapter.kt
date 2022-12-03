@@ -1,5 +1,6 @@
 package com.heeyjinny.contentresolver
 
+import android.media.MediaPlayer
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,6 +18,12 @@ class MusicRecyclerAdapter: RecyclerView.Adapter<MusicRecyclerAdapter.Holder>() 
     //음악 목록을 저장해둘 변수 생성
     //제네릭으로 Music사용 컬렉션
     var musicList = mutableListOf<Music>()
+
+    //10
+    //목록을 클릭해서 음원 실행하기
+    //MediaPlayer를 담아두는 변수 선언하여
+    //홀더에서 아이템뷰를 클릭 이벤트 생성
+    var mediaPlayer: MediaPlayer? = null
 
     //5
     //화면에 보이는 아이템 레이아웃의 바인딩 생성 메서드 구현
@@ -55,6 +62,28 @@ class MusicRecyclerAdapter: RecyclerView.Adapter<MusicRecyclerAdapter.Holder>() 
         //변수를 생성하여 현재 Music클래스가 가지고 있는 Uri저장하는 것이 좋음
         var musicUri: Uri? = null
 
+        //11
+        //init블록을 만들어 생성자로 넘어온 itemView에 클릭 리스너 연결
+        init {
+            binding.root.setOnClickListener {
+
+                //11-2
+                //음악중복 실행의 문제점이 있기에 음원 Uri설정 전
+                //현재 mediaPlayer에 설정된 값이 있으면 해제 후 실행하도록 설정
+                if (mediaPlayer != null){
+                    mediaPlayer?.release()
+                    mediaPlayer = null
+                }
+
+                //11-1
+                //MediaPlayer에 사용할 음원의 Uri로 설정하고 시작메서드 호출하여
+                //목록 클릭 시 음원 플레이 되도록 설정
+                mediaPlayer = MediaPlayer.create(itemView.context, musicUri)
+                mediaPlayer?.start()
+
+            }
+        }//init
+
         //7
         //setMusic()메서드 구현
         //onBindViewHolder에서 음악목록의 현재 위치 값을 받아
@@ -83,6 +112,10 @@ class MusicRecyclerAdapter: RecyclerView.Adapter<MusicRecyclerAdapter.Holder>() 
             this.musicUri = music.getMusicUri()
 
         }//setMusic()
+
+        //8
+        //음원정보를 읽어와서 리사이클러뷰에 음원목록 보여주는 코드 작성
+        //MainActivity.kt 작성
 
     }//Holder
 

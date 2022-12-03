@@ -50,6 +50,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 <!--  리사이클러뷰에 사용할 어댑터 생성  -->
 <!--  app - java 밑 패키지명 우클릭 - MusicRecyclerAdapter 클래스생성  -->
 
