@@ -7,6 +7,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.heeyjinny.contentresolver.databinding.ActivityMainBinding
 
+//(1~4) : 권한처리 관련
+//(5) : 음원 데이터 관련(음원Id, 음원명, 아티스트명, 앨범구분ID, 음원길이)
+
 //1
 //외부저장소인 MediaStore의 음원 접근을 위해
 //Manifest.xml에 외부저장소 권한 명세
@@ -39,6 +42,15 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+        //5
+        //음원데이터 관련 클래스 정의
+        //app - java밑 패키지 우클릭 - Kotlin Class/File
+        //Music.kt 클래스 생성
+
+        //6
+        //음원목록 화면 만들기
+        //activity_main.xml 작성
 
     }//onCreate
 
