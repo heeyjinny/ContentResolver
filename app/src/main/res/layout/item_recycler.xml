@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-<!--  음악 목록 뷰 배치  -->
+<!--  리사이클러의 음악 목록 뷰 배치  -->
     <ImageView
         android:id="@+id/imageAlbum"
         android:layout_width="100dp"
@@ -49,5 +49,8 @@
         android:text="00:00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+<!--  리사이클러뷰에 사용할 어댑터 생성  -->
+<!--  app - java 밑 패키지명 우클릭 - MusicRecyclerAdapter 클래스생성  -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
